@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import PixIcon from "@mui/icons-material/Pix";
 import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const { palette } = useTheme();
+  const navigate = useNavigate();
   const [selected, setSelected] = useState("dashboard");
   return (
     <FlexBetween mb="0.25rem" p="0.5rem 0rem" color={palette.grey[300]}>
       {/* LEFT SIDE */}
-      <FlexBetween gap="0.75rem">
+      <FlexBetween gap="0.75rem" onClick={() => navigate("/")}>
         <PixIcon sx={{ fontSize: "28px" }} />
         <Typography variant="h4" fontSize="16px">
           WealthWorks
@@ -30,10 +32,10 @@ const Navbar = (props: Props) => {
               textDecoration: "inherit",
             }}
           >
-            dashboard
+            Dashboard
           </Link>
         </Box>
-        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+        {/* <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
           <Link
             to="/predictions"
             onClick={() => setSelected("predictions")}
@@ -42,9 +44,9 @@ const Navbar = (props: Props) => {
               textDecoration: "inherit",
             }}
           >
-            predictions
+            Predictions
           </Link>
-        </Box>
+        </Box> */}
       </FlexBetween>
     </FlexBetween>
   );

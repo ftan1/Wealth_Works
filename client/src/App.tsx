@@ -7,6 +7,8 @@ import { themeSettings } from "./theme";
 import Navbar from "@/scenes/navbar";
 import Dashboard from "@/scenes/dashboard";
 import Predictions from "@/scenes/predictions";
+import SideBar from "@/scenes/sidebar";
+import StockWatcher from "@/scenes/stockWatcher";
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []);
@@ -15,11 +17,13 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem">
+          <Box width="100%" height="100%" padding="1rem 2rem 4rem 6rem">
             <Navbar />
+            <SideBar />
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/predictions" element={<Predictions />} />
+              <Route path="/watcher" element={<StockWatcher />} />
             </Routes>
           </Box>
         </ThemeProvider>
